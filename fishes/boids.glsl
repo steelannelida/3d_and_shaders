@@ -69,7 +69,7 @@ void main() {
             vec2 ov = opx2.x + vec2(cos(opx1.z), sin(opx1.z));
             vec2 rv = opos - pos;
             if (length(rv) <= avoidR) {
-                avoidvec -= normalize(rv);
+                avoidvec -= 0.3 * normalize(rv);
             }
             if (length(rv) > visR) {
                 continue;
@@ -109,7 +109,7 @@ void main() {
             speed = 2.;
         }
         // Update tail-wiggling phase
-        phase += 200. * thrust * dt;
+        phase += 150. * thrust * dt;
         phase = 2. * PI * fract(phase / 2. / PI);
     }
         

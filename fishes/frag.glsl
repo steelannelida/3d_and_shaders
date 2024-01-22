@@ -83,13 +83,14 @@ void main() {
     // Refracted ray underwater
     vec3 rv = refract(viewvec, normal, 1.3);
     float depth = 0.5; // Bottom depth
-    float fishdep = 0.1; // Depth where fishes swim 
+    float fishdep = 0.25; // Depth where fishes swim 
     float l = -depth - pt.z / rv.z;
     vec3 bottom_pt = pt + l * rv; // Where the ray hits bottom
     float fl = -fishdep - pt.z / rv.z;
     vec3 fish_pt = pt + fl * rv; // Where the ray hits fishes
 
     vec4 fish_px = texture2D(fishes, fish_pt.xy); 
+    fish_px.rgb = pow(fish_px.rgb, vec3(1.5, 2.5, 3.5));
     vec3 bottom_px = texture2D(bottom, fract(bottom_pt.xy)).rgb;
     bottom_px *= 1. - 0.7 *  texture2D(fishes, bottom_pt.xy).a; // Fish shadow (lighted from directly above)
     vec3 refracted = mix(bottom_px, fish_px.rgb, fish_px.a); // Refracted light color

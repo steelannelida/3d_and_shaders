@@ -37,7 +37,7 @@ function preload() {
 
 
 function setup() {
-    createCanvas(bottom.width * 0.75, bottom.height * 0.75, WEBGL);
+    createCanvas(bottom.width, bottom.height, WEBGL);
     noStroke();
 
     // Buffer for the surface waves.
