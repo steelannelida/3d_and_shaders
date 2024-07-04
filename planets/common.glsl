@@ -70,7 +70,7 @@ float noise(vec2 x) {
 }
 
 vec3 light() {
-    return vec3(sin(t / 10.), 0., cos(t / 10.));
+    return vec3(1., 0., 0.);
 }
 
 float fbmsh(vec2 x, float t) {
