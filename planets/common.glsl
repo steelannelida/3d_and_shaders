@@ -83,17 +83,17 @@ float fbmsh(vec2 x, float t) {
         cos(angle), sin(angle),
         -sin(angle), cos(angle)
     );
-    for (int i = 0; i < 15; ++i) {
+    for (int i = 0; i < 5; ++i) {
         x += t * v;
         v *= rot;
         res += noise(x * freq) * amp * (0.5 + res);
-        amp *= 0.5;
+        amp *= 0.53;
         freq *= 2.;
     }
     return res;
 }
 
-#define SC 56.23451234
+#define SC 15.6
 
 float altitude(vec3 p) {
     p = normalize(p);

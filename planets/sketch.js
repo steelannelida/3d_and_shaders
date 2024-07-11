@@ -71,7 +71,7 @@ function setup() {
     for (i = 0; i < 3; ++i) {
         buf = bufs[i];
         buf.begin();
-        terrainshader.setUniform('shift', i * 1000.);
+        terrainshader.setUniform('shift', random() * 3000.);
         shader(terrainshader);
         plane(TS, TS);
         buf.end();
@@ -91,6 +91,7 @@ function draw() {
     sphere(140, 100, 100);
     planet_buf.end();
 
+
     shader(atmoshader);
     background(0);
     perspective(fov, width / height, 0.1, 8000);
@@ -98,6 +99,8 @@ function draw() {
     atmoshader.setUniform('planetColor', planet_buf);
     atmoshader.setUniform('planetDepth', planet_buf.depth);
     atmoshader.setUniform('resolution', [width, height]);
+    atmoshader.setUniform('t', millis() * 0.001);
+
     sphere(160, 100, 100);
     console.log(frameRate());
 }
